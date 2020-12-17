@@ -109,11 +109,9 @@ declare variable $config:facets := [
         "hierarchical": false(),
         "output": function($label) {
             switch($label)
-                case "de" return "German"
-                case "es" return "Spanish"
+                case "it" return "Italian"
+                case "cz" return "Czech"
                 case "la" return "Latin"
-                case "fr" return "French"
-                case "en" return "English"
                 default return $label
         }
     }
