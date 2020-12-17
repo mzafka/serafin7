@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="teipublisher_odds.xsd"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en">
     <teiHeader>
         <fileDesc>
@@ -150,9 +149,9 @@
             font-weight: bold;
             </outputRendition>
         </model>
-                    <model behaviour="alternate">
+        <model behaviour="alternate">
             <param name="default" value="."/>
-            <param name="alternate" value="id(substring-after(@ref, '#'), root(.))"/>
+            <param name="alternate" value="id(substring-after(@ref, '#'), collection('/db/apps/serafin/data/auxiliary')/id('persons'))"/>
             <outputRendition>
             color: #1565c0;
             </outputRendition>
