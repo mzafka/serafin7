@@ -91,6 +91,20 @@ declare variable $config:pagination-depth := 10;
  :)
 declare variable $config:pagination-fill := 5;
 
+(: Define mapping between cross-search and local facet and field names :)
+declare variable $config:cross-search-facets := 
+    map {
+            "genre": "genre", 
+            "language": "language",
+            "corpus": "corpus"      
+    };
+
+declare variable $config:cross-search-fields := 
+    map {
+        "lang": "language", 
+        "author":"author", 
+        "title":"title"
+    };
 (:
  : Display configuration for facets to be shown in the sidebar. The facets themselves
  : are configured in the index configuration, collection.xconf.
@@ -282,14 +296,14 @@ declare variable $config:data-root :=$config:app-root || "/data";
  : The root of the collection hierarchy whose files should be displayed
  : on the entry page. Can be different from $config:data-root.
  :)
-declare variable $config:data-default := $config:data-root;
+declare variable $config:data-default := $config:data-root || "/letters";
 
 (:~
  : A sequence of root elements which should be excluded from the list of
  : documents displayed in the browsing view.
  :)
 declare variable $config:data-exclude :=
-    doc($config:data-root || "/taxonomy.xml")/tei:TEI
+    collection($config:data-root || "/auxiliary")/tei:TEI
 ;
 
 (:~

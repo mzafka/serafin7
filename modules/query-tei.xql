@@ -24,6 +24,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "config.xqm";
 import module namespace nav="http://www.tei-c.org/tei-simple/navigation/tei" at "navigation-tei.xql";
 import module namespace query="http://www.tei-c.org/tei-simple/query" at "query.xql";
+import module namespace console="http://exist-db.org/xquery/console";
 
 declare function teis:query-default($fields as xs:string+, $query as xs:string, $target-texts as xs:string*,
     $sortBy as xs:string*) {
@@ -193,4 +194,105 @@ declare function teis:get-current($config as map(*), $div as node()?) {
             $div
         else
             (nav:filler($config, $div), $div)[1]
+};
+
+
+declare function teis:query-options($sort, $facets) {
+     map:merge((
+        $query:QUERY_OPTIONS,
+        map {
+            "facets": $facets
+        },
+        map { "fields": $sort}
+    ))
+};
+
+declare function teis:query-document($request as map(*)) {
+    let $root := if (ends-with($config:data-root, "/")) then
+        $config:data-root
+    else
+        $config:data-root || "/"
+
+    let $text-query := xmldb:decode($request?parameters?query)
+
+
+    let $facet-query:= map:merge((
+        for $dimension in map:keys($config:cross-search-facets)
+            return
+                (: only add the dimensions with specified criteria :)
+                if ($request?parameters('facet-'||$dimension)) then
+                    map {
+                        (: map query parameters to local facet dimensions :)
+                        $config:cross-search-facets($dimension): $request?parameters('facet-'||$dimension)
+                    }
+                else
+                    ()
+        ))
+
+    let $fields := 
+            for $f in map:keys($config:cross-search-fields)
+            return 
+                $config:cross-search-fields($f)
+
+
+    let $constraints := 
+        (
+            if ($text-query) then $text-query else ()
+            ,
+            for $f in map:keys($config:cross-search-fields)
+                let $q := 
+                    for $p in $request?parameters($f) 
+                        let $query := xmldb:decode($p)
+                        return if ($query) then $query else ()
+
+                return
+                    if (count($q)) then 
+                        $config:cross-search-fields($f) || ':(' || 
+                        string-join($q, teis:conjunction($request?parameters($f || '-operator'))) || ')' 
+                    else 
+                        ()
+        )
+
+    let $query := string-join($constraints, ' AND ')
+    let $c:= console:log($query)
+    let $c:= console:log(teis:query-options($fields, $facet-query))
+
+    (: Find matches :)
+    let $hits :=
+        collection($config:data-root)//tei:text[ft:query(., $query, teis:query-options($fields, $facet-query))]
+    
+    let $facets:= 
+        map:merge(
+            for $dimension in map:keys($config:cross-search-facets)
+            return
+                map { $dimension: ft:facets($hits, $config:cross-search-facets($dimension), 50)}
+        )
+
+    let $data := 
+        for $doc in $hits
+            let $flds :=  
+                for $f in map:keys($config:cross-search-fields) return
+                    map:entry($f, ft:field($doc, $config:cross-search-fields($f))) 
+            return
+                map:merge((
+                    map { 
+                        "filename": substring-after(document-uri(root($doc)), $root),
+                        "app": "serafin"},
+                    $flds         
+                ))
+
+    return 
+(: ($query , $facet-query) :)
+    map {
+        "facets": $facets,
+        "data":  if (count($data) > 1 ) then $data else [$data]
+    }
+};
+
+declare function teis:conjunction($operator) {
+    switch ($operator) 
+        case "and"
+            return ' AND '
+        default
+            return ' OR '
 };
