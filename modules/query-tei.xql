@@ -213,8 +213,14 @@ declare function teis:query-document($request as map(*)) {
     else
         $config:data-root || "/"
 
-    let $text-query := xmldb:decode($request?parameters?query)
-
+    let $text-query := 
+        for $q in $request?parameters?query 
+            let $decoded := xmldb:decode($q)
+            return 
+                if ($decoded) then 
+                    $decoded
+                else
+                    ()
 
     let $facet-query:= map:merge((
         for $dimension in map:keys($config:cross-search-facets)
@@ -237,7 +243,7 @@ declare function teis:query-document($request as map(*)) {
 
     let $constraints := 
         (
-            if ($text-query) then $text-query else ()
+            if (count($text-query)) then $text-query else ()
             ,
             for $f in map:keys($config:cross-search-fields)
                 let $q := 
