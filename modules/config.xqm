@@ -111,10 +111,16 @@ declare variable $config:cross-search-fields :=
  :)
 declare variable $config:facets := [
     map {
-        "dimension": "genre",
-        "heading": "facets.genre",
+        "dimension": "date",
+        "heading": "serafin.facets.date",
         "max": 5,
-        "hierarchical": true()
+        "hierarchical": false()
+    },
+    map {
+        "dimension": "author",
+        "heading": "serafin.facets.author",
+        "max": 6,
+        "hierarchical": false()
     },
     map {
         "dimension": "language",
@@ -123,9 +129,9 @@ declare variable $config:facets := [
         "hierarchical": false(),
         "output": function($label) {
             switch($label)
-                case "it" return "Italian"
-                case "cz" return "Czech"
-                case "la" return "Latin"
+                case "it" return "włoski"
+                case "cz" return "czeski"
+                case "la" return "łaciński"
                 default return $label
         }
     }

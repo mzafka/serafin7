@@ -12,6 +12,8 @@
                 <field name="file" expression="util:document-name(.)"/>
                 <facet dimension="genre" expression="nav:get-metadata(ancestor::tei:TEI, 'genre')" hierarchical="yes"/>
                 <facet dimension="language" expression="nav:get-metadata(ancestor::tei:TEI, 'language')"/>
+                <facet dimension="date" expression="nav:get-metadata(ancestor::tei:TEI, 'date')"/>
+                <facet dimension="author" expression="nav:get-metadata(ancestor::tei:TEI, 'author')"/>
                 <facet dimension="corpus" expression="'Serafin'"/>
             </text>
             <text qname="tei:div">

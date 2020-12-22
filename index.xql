@@ -5,6 +5,8 @@ module namespace idx="http://teipublisher.com/index";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace dbk="http://docbook.org/ns/docbook";
 
+declare variable $idx:persons := doc('/db/apps/serafin/data/auxiliary/authorityLists.xml');
+
 declare variable $idx:app-root :=
     let $rawPath := system:get-module-load-path()
     return
@@ -30,27 +32,21 @@ declare function idx:get-metadata($root as element(), $field as xs:string) {
             case "title" return
                 string-join((
                     $header//tei:msDesc/tei:head, $header//tei:titleStmt/tei:title[@type = 'main'],
-                    $header//tei:titleStmt/tei:title,
-                    $root/dbk:info/dbk:title
+                    $header//tei:titleStmt/tei:title
                 ), " - ")
             case "author" return (
-                $header//tei:correspDesc/tei:correspAction/tei:persName,
-                $header//tei:titleStmt/tei:author,
-                $root/dbk:info/dbk:author
+                idx:resolve-person($header//tei:correspDesc/tei:correspAction/tei:persName/@ref)
             )
             case "language" return
                 $root//tei:text[@type='source']/@xml:lang
             case "date" return 
-                $header//tei:titleStmt/tei:title/tei:date/@when
+                substring($header//tei:correspDesc/tei:correspAction/tei:date/@when, 1, 4)
             case "genre" return 
                 'Letter'
             default return
                 ()
 };
 
-declare function idx:get-genre($header as element()?) {
-    for $target in $header//tei:textClass/tei:catRef[@scheme="#genre"]/@target
-    let $category := id(substring($target, 2), doc($idx:app-root || "/data/taxonomy.xml"))
-    return
-        $category/ancestor-or-self::tei:category[parent::tei:category]/tei:catDesc
+declare function idx:resolve-person($key) {
+    $idx:persons/id(substring-after($key, '#'))/tei:persName
 };
