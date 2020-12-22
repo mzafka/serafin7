@@ -1,5 +1,9 @@
 {
-    "myapp": {
-        "title": "Foo"
+    "serafin": {
+        "facets": {
+            "date": "Year",
+            "author": "Sender"
+        },
+        "more": "Show more"
     }
 }
