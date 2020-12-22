@@ -6,6 +6,7 @@
 
 
                  
+                 
                  <desc>15th c. manuscript correspondence with parallel translation</desc>
                 </title>
             </titleStmt>
@@ -170,6 +171,7 @@
             content: ': ';
             </outputRendition>
         </model>
+                    <model predicate="@target" behaviour="inline"/>
                     <model behaviour="note"/>
                 </elementSpec>
         <elementSpec ident="placeName" mode="add">
@@ -305,8 +307,8 @@
                     <model output="fo" behaviour="omit"/>
                     <model output="web" predicate="$parameters?header='short'" behaviour="block"/>
                     <model output="web" predicate="$parameters?header='letter'" behaviour="heading">
-            <param name="content" value="(fileDesc/titleStmt/title[not(@type)], profileDesc/correspDesc)"/>
-            <param name="level" value="5"/>
+            <param name="content" value="fileDesc/titleStmt/title[not(@type)]"/>
+            <param name="level" value="2"/>
         </model>
                     <model output="web" behaviour="metadata"/>
                 </elementSpec>
