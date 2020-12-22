@@ -170,6 +170,7 @@
             content: ': ';
             </outputRendition>
         </model>
+                    <model behaviour="note"/>
                 </elementSpec>
         <elementSpec ident="placeName" mode="add">
                     <model output="latex" behaviour="inline">
