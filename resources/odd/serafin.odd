@@ -7,6 +7,7 @@
 
                  
                  
+                 
                  <desc>15th c. manuscript correspondence with parallel translation</desc>
                 </title>
             </titleStmt>
@@ -300,6 +301,24 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="teiHeader" mode="change">
+                    <model predicate="$parameters?mode='footer-prev'" behaviour="block" cssClass="footer">
+            <param name="prev" value="let $next := 'MS' || (xs:int(substring-after(./ancestor::TEI/@xml:id, 'MS')) -1)  let $doc := collection(util:collection-name(.))/id($next)  let $link := if ($doc) then util:collection-name(.) || '/' || util:document-name($doc) else &#34;&#34;  return $link"/>
+            <pb:template xmlns="" xml:space="preserve"><paper-button>
+              <pb-link path="[[prev]]" emit="transcription" class="part-nav">
+                  <iron-icon icon="icons:first-page"/>
+                  <pb-i18n key="serafin.navigation.previous">poprzedni</pb-i18n>
+              </pb-link>
+ </paper-button></pb:template>
+        </model>
+                    <model predicate="$parameters?mode='footer-next'" behaviour="block" cssClass="footer">
+            <param name="next" value="let $next := 'MS' || (1 + xs:int(substring-after(./ancestor::TEI/@xml:id, 'MS')))  let $doc := collection(util:collection-name(.))/id($next)   let $link := if (count($doc)) then util:collection-name(.) || '/' || util:document-name($doc) else &#34;&#34;  return $link"/>
+            <pb:template xmlns="" xml:space="preserve"><paper-button>
+              <pb-link path="[[next]]" emit="transcription" class="part-nav">
+                <pb-i18n key="serafin.navigation.next">następny</pb-i18n>
+                <iron-icon icon="icons:last-page"/>
+              </pb-link>  
+</paper-button></pb:template>
+        </model>
                     <model output="latex" behaviour="block">
             <param name="content" value="(fileDesc/titleStmt/title[not(@type)], profileDesc/correspDesc)"/>
             <pb:template xmlns="" xml:space="preserve">\def\volume{[[content]]}</pb:template>

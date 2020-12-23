@@ -49,6 +49,27 @@
                 .toc-toggle, pb-navigation {
                     display: none;
                 }
+
+                footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--pb-toolbar-background-color);
+            color: var(--pb-toolbar-color);
+            padding-right: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer pb-view {
+            font: var(--pb-base-font);
+            --pb-view-max-width: auto;
+        }
+
+
             </style>
         </custom-style>
     </head>
@@ -65,7 +86,7 @@
                     </app-header>
 
                     <section class="breadcrumbs">
-                        <pb-view id="title-view1" src="document1" xpath="//teiHeader" view="single">
+                        <pb-view id="title-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription" >
                             <pb-param name="header" value="letter"/>
                         </pb-view>
                     </section>
@@ -73,6 +94,14 @@
                         <pb-view id="view1" src="document1" xpath="! (.//text[@xml:lang = 'la']/body | .//text/body)[1]" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription"/>
                         <pb-view id="view2" src="document1" xpath="//text[@xml:lang='pl']/body" subscribe="transcription" column-separator=".tei-cb" append-footnotes="append-footnotes"/>
                     </main>
+                    <footer>
+                        <pb-view src="document1" subscribe="transcription" view="single" xpath="//teiHeader">
+                            <pb-param name="mode" value="footer-prev"/>
+                        </pb-view>
+                        <pb-view src="document1" subscribe="transcription" view="single" xpath="//teiHeader">
+                            <pb-param name="mode" value="footer-next"/>
+                        </pb-view>
+                    </footer>
                 </app-header-layout>
             </app-drawer-layout>
         </pb-page>
