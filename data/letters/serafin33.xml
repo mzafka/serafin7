@@ -5,7 +5,7 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Stanisław Barwałdzki do Mikołaja Serafina, <placeName ref="#Wieliczka"/>, <date when="1452-11-14">14 listopada 1452</date>
+                <title>Stanisław Barwałdzki do Mikołaja Serafina, <placeName ref="#Wieliczka">Wieliczka</placeName>, <date when="1452-11-14">14 listopada 1452</date>
                 </title>
                 <title type="s">Korespondencja żupnika krakowskiego Mikołaja Serafina z lat
                     1437-1459</title>
