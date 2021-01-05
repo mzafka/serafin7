@@ -2,9 +2,9 @@ body {
     --pb-splash-image: url(../images/serafin-splash.png);
     --pb-splash-image-size: 460px auto;
     --pb-splash-background-color: var(--pb-color-inverse);
-    --pb-logo-image: url(../images/serafin-initial.png);
-    --pb-logo-image-width: 440px;
-    --pb-logo-image-height: 120px;
+    --pb-logo-image: url(../images/serafin_logo.png);
+    --pb-logo-image-width: 540px;
+    --pb-logo-image-height: 90px;
     --pb-menubar-background-color: #1a1715;
     --pb-menubar-background-image: none;
     --pb-menubar-color: var(--pb-color-inverse);
@@ -14,7 +14,7 @@ body {
 .logo {
     background-image: var(--pb-logo-image);
     background-repeat: no-repeat;
-    background-size: auto 120px;
+    background-size: auto 90px;
     background-position: left center;
     width: var(--pb-logo-image-width);
     height: var(--pb-logo-image-height);
