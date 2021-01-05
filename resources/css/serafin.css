@@ -1,5 +1,5 @@
 body {
-    --pb-splash-image: url(../images/serafin-splash.png);
+    --pb-splash-image: url(../images/animation_serafin.gif);
     --pb-splash-image-size: 460px auto;
     --pb-splash-background-color: var(--pb-color-inverse);
     --pb-logo-image: url(../images/serafin_logo.png);
