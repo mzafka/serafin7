@@ -34,9 +34,10 @@ declare function idx:get-metadata($root as element(), $field as xs:string) {
                     $header//tei:msDesc/tei:head, $header//tei:titleStmt/tei:title[@type = 'main'],
                     $header//tei:titleStmt/tei:title
                 ), " - ")
-            case "author" return (
-                idx:resolve-person($header//tei:correspDesc/tei:correspAction/tei:persName/@ref)
-            )
+            case "author" return
+                for $p in $header//tei:correspDesc/tei:correspAction/tei:persName/@ref
+                    return 
+                        idx:resolve-person($p)
             case "language" return
                 $root//tei:text[@type='source']/@xml:lang
             case "date" return 
