@@ -28,7 +28,7 @@ declare function facets:sort($facets as map(*)?) {
         if (exists($facets)) then
             for $key in map:keys($facets)
             let $value := map:get($facets, $key)
-            order by $key ascending
+            order by $key collation "http://www.w3.org/2013/collation/UCA"
             return
                 map { $key: $value }
         else
