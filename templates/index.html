@@ -314,9 +314,9 @@
                                 <div class="browse" slot="page">
                                     <pb-custom-form id="facets" url="api/search/facets" event="pb-results-received" subscribe="docs" emit="docs"/>
                                     <pb-browse-docs id="document-list" url="api/collection/" 
-                                        sort-options="[{&#34;label&#34;: &#34;serafin.browse.number&#34;, &#34;value&#34;: &#34;number&#34;}, {&#34;label&#34;: &#34;serafin.browse.date&#34;, &#34;value&#34;: &#34;year&#34;}, {&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;}]" 
+                                        sort-options="[{&#34;label&#34;: &#34;serafin.browse.number&#34;, &#34;value&#34;: &#34;number&#34;}, {&#34;label&#34;: &#34;serafin.browse.date&#34;, &#34;value&#34;: &#34;year&#34;}, {&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;browse.place&#34;, &#34;value&#34;: &#34;place&#34;}]" 
                                         sort-by="number" 
-                                        filter-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;serafin.browse.number&#34;, &#34;value&#34;: &#34;number&#34;}]" 
+                                        filter-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;serafin.browse.number&#34;, &#34;value&#34;: &#34;number&#34;},{&#34;label&#34;: &#34;serafin.browse.place&#34;, &#34;value&#34;: &#34;place&#34;}]" 
                                         filter-by="title" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
                                         <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"/>
                                         <pb-restricted login="login" slot="toolbar">
