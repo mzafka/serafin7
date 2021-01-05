@@ -123,6 +123,12 @@ declare variable $config:facets := [
         "hierarchical": false()
     },
     map {
+        "dimension": "place",
+        "heading": "serafin.facets.place",
+        "max": 6,
+        "hierarchical": false()
+    },
+    map {
         "dimension": "language",
         "heading": "facets.language",
         "max": 5,

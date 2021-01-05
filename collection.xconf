@@ -7,6 +7,8 @@
             <text match="/tei:TEI/tei:text">
                 <field name="title" expression="nav:get-metadata(ancestor::tei:TEI, 'title')"/>
                 <field name="author" expression="nav:get-metadata(ancestor::tei:TEI, 'author')"/>
+                <field name="place" expression="nav:get-metadata(ancestor::tei:TEI, 'place')"/>
+
                 <field name="language" expression="nav:get-metadata(ancestor::tei:TEI, 'language')"/>
                 <field name="date" expression="nav:get-metadata(ancestor::tei:TEI, 'date')"/>
                 <field name="file" expression="util:document-name(.)"/>
@@ -14,6 +16,8 @@
                 <facet dimension="language" expression="nav:get-metadata(ancestor::tei:TEI, 'language')"/>
                 <facet dimension="date" expression="nav:get-metadata(ancestor::tei:TEI, 'date')"/>
                 <facet dimension="author" expression="nav:get-metadata(ancestor::tei:TEI, 'author')"/>
+                <facet dimension="place" expression="nav:get-metadata(ancestor::tei:TEI, 'place')"/>
+
                 <facet dimension="corpus" expression="'Serafin'"/>
             </text>
             <text qname="tei:div">

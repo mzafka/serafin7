@@ -38,6 +38,10 @@ declare function idx:get-metadata($root as element(), $field as xs:string) {
                 for $p in $header//tei:correspDesc/tei:correspAction/tei:persName/@ref
                     return 
                         idx:resolve-person($p)
+            case "place" return
+                for $p in $header//tei:correspDesc/tei:correspAction/tei:placeName/@ref
+                    return 
+                        idx:resolve-place($p)
             case "language" return
                 $root//tei:text[@type='source']/@xml:lang
             case "date" return 
@@ -50,4 +54,8 @@ declare function idx:get-metadata($root as element(), $field as xs:string) {
 
 declare function idx:resolve-person($key) {
     $idx:persons/id(substring-after($key, '#'))/tei:persName
+};
+
+declare function idx:resolve-place($key) {
+    $idx:persons/id(substring-after($key, '#'))/tei:placeName
 };

@@ -2,7 +2,8 @@
     "serafin": {
         "facets": {
             "date": "Year",
-            "author": "Sender"
+            "author": "Sender",
+            "place": "Place"
         },
         "more": "Show more"
     }

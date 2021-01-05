@@ -2,7 +2,8 @@
     "serafin": {
         "facets": {
             "date": "Rok",
-            "author": "Nadawca"
+            "author": "Nadawca",
+            "place": "Miejsce nadania"
         },
         "more": "Pokaż więcej"
     }
