@@ -8,16 +8,17 @@
                 <field name="title" expression="nav:get-metadata(ancestor::tei:TEI, 'title')"/>
                 <field name="author" expression="nav:get-metadata(ancestor::tei:TEI, 'author')"/>
                 <field name="place" expression="nav:get-metadata(ancestor::tei:TEI, 'place')"/>
-
                 <field name="language" expression="nav:get-metadata(ancestor::tei:TEI, 'language')"/>
                 <field name="date" expression="nav:get-metadata(ancestor::tei:TEI, 'date')"/>
+                <field name="year" expression="nav:get-metadata(ancestor::tei:TEI, 'year')"/>
+                <field name="number" expression="nav:get-metadata(ancestor::tei:TEI, 'number')"/>
                 <field name="file" expression="util:document-name(.)"/>
                 <facet dimension="genre" expression="nav:get-metadata(ancestor::tei:TEI, 'genre')" hierarchical="yes"/>
                 <facet dimension="language" expression="nav:get-metadata(ancestor::tei:TEI, 'language')"/>
                 <facet dimension="date" expression="nav:get-metadata(ancestor::tei:TEI, 'date')"/>
+                <facet dimension="year" expression="nav:get-metadata(ancestor::tei:TEI, 'year')"/>
                 <facet dimension="author" expression="nav:get-metadata(ancestor::tei:TEI, 'author')"/>
                 <facet dimension="place" expression="nav:get-metadata(ancestor::tei:TEI, 'place')"/>
-
                 <facet dimension="corpus" expression="'Serafin'"/>
             </text>
             <text qname="tei:div">

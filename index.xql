@@ -44,7 +44,11 @@ declare function idx:get-metadata($root as element(), $field as xs:string) {
                         idx:resolve-place($p)
             case "language" return
                 $root//tei:text[@type='source']/@xml:lang
+            case "number" return 
+                idx:pad-number(substring($root/@xml:id, 3), 2)
             case "date" return 
+                $header//tei:correspDesc/tei:correspAction/tei:date/@when
+            case "year" return 
                 substring($header//tei:correspDesc/tei:correspAction/tei:date/@when, 1, 4)
             case "genre" return 
                 'Letter'
@@ -59,3 +63,14 @@ declare function idx:resolve-person($key) {
 declare function idx:resolve-place($key) {
     $idx:persons/id(substring-after($key, '#'))/tei:placeName
 };
+
+
+declare function idx:pad-number($number as xs:anyAtomicType?, $length as xs:integer)  as xs:string {
+
+   if ($length > string-length(string($number)))
+   then
+        '0' || string($number)
+    else 
+        $number
+ } ;
+

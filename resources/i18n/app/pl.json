@@ -5,6 +5,10 @@
             "author": "Nadawca",
             "place": "Miejsce nadania"
         },
+        "browse": {
+            "date": "Data",
+            "number": "Numer listu"
+        },
         "more": "Pokaż więcej"
     }
 }
