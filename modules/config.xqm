@@ -113,7 +113,7 @@ declare variable $config:facets := [
     map {
         "dimension": "date",
         "heading": "serafin.facets.date",
-        "max": 5,
+        "max": 20,
         "hierarchical": false()
     },
     map {
