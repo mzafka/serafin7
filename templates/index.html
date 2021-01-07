@@ -19,6 +19,7 @@
         <style>
             main {
                 margin: 0 20px 0 20px;
+               
             }
             
             @media (max-width: 1023px) {
@@ -242,6 +243,30 @@
                 padding-left: 1em;
                 vertical-align: middle;
             }
+
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 34px;
+                background-color: var(--pb-toolbar-background-color);
+                color: var(--pb-toolbar-color);
+                padding-right: 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .version img {
+                width: 92px;
+                margin-left: 10px;
+            }
+            pb-custom-form {
+                max-height: calc(100vh - 302px);
+                overflow: scroll;
+                padding-bottom: 10px;
+            }
         </style>
     </custom-style>
 </head>
@@ -343,11 +368,14 @@
                     </section>
                 </main>
                 <footer class="version">
-                    Anna Skolimowska, Tomasz Płóciennik,
-                        Waldemar Bukowski (ed.)
-                        / Anna Krzysik (dig. ed.) /
-                    app: v<span data-template="pages:version"/> Magdalena Turska /
-                    web components: v<pb-version/>
+                    <div>Anna Skolimowska, Tomasz Płóciennik, Waldemar Bukowski (ed.) /
+                        Magdalena Turska, Anna Krzysik (dig. ed.) / v <span data-template="pages:version"/>
+                    </div>
+                    <div>
+                        <a href="https://teipublisher.com">
+                            <img src="resources/images/tei-publisher-logo-color.svg" />
+                        </a>
+                    </div>
                 </footer>
             </app-header-layout>
         </app-drawer-layout>
