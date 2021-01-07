@@ -44,6 +44,8 @@
                         description={[[note]]}
                     }</pb:template>
                 </pb:behaviour>
+                <rendition source="serafin.css"/>
+
             </tagsDecl>
         </encodingDesc>
         <revisionDesc>
