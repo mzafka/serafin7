@@ -111,21 +111,21 @@ declare variable $config:cross-search-fields :=
  :)
 declare variable $config:facets := [
     map {
-        "dimension": "year",
-        "heading": "serafin.facets.date",
-        "max": 20,
+        "dimension": "place",
+        "heading": "serafin.facets.place",
+        "max": 3,
         "hierarchical": false()
     },
     map {
         "dimension": "author",
         "heading": "serafin.facets.author",
-        "max": 6,
+        "max": 5,
         "hierarchical": false()
     },
     map {
-        "dimension": "place",
-        "heading": "serafin.facets.place",
-        "max": 6,
+        "dimension": "year",
+        "heading": "serafin.facets.date",
+        "max": 20,
         "hierarchical": false()
     },
     map {
