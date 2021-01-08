@@ -2471,12 +2471,15 @@
                         <placeName>Przemyśl</placeName>
                         <note>miasto król. i zamek nad Sanem w województwie ruskim, stolica ziemi i
                             powiatu (<title>Miasta polskie</title> II, s. 376–379).</note>
+                            <location><geo>49.7836031 22.7490375</geo></location>
                     </place>
                     <place xml:id="Sandomierz">
                         <placeName>Sandomierz</placeName>
                         <note>miasto na krawędzi Wyżyny Sandomierskiej, na lewym brzegu Wisły w
                             pobliżu ujścia Sanu, 15 km na pn.-wsch. od Tarnobrzega, wówczas stolica
                             ziemi i województwa (<title>Miasta polskie</title> I, s. 536–538)</note>
+                            <location><geo>50.6781642 21.7105923</geo></location>
+
                     </place>
                     <place xml:id="Jasienica">
                         <placeName>Jasienica</placeName>
@@ -2490,6 +2493,7 @@
                             znalazła się w rękach starostów samborskich. W 1570 r. włączona została
                             do żupy drohobyckiej (Rutkowski, <title>Żupy ruskie</title>, s. 120;
                             Bukowski, <title>Objęcie w dzierżawę</title>, s. 111).</note>
+                            <location><geo>49.3357056 23.3417619</geo></location>
                     </place>
                     <place xml:id="Baszowa">
                         <placeName>Baszowa</placeName>
@@ -2497,12 +2501,14 @@
                             12 km na zach. od Drohobycza, wraz z Jasienicą stanowiła część żupy
                             przemyskiej (Bukowski, <title>Objęcie w dzierżawę</title>, s.
                             111).</note>
-                        <place xml:id="Mościska">
-                            <placeName>Mościska</placeName>
-                            <note>(dzisiaj Mostys’ka w Republice Ukrainy), miasto w ziemi
-                                przemyskiej, 27 km na wsch. od Przemyśla, miejsce obrad wielu
-                                sejmików partykularnych ruskich.</note>
-                        </place>
+                            <location><geo>49.3495775 23.3423203</geo></location>
+                    </place>
+                    <place xml:id="Mościska">
+                        <placeName>Mościska</placeName>
+                        <note>(dzisiaj Mostys’ka w Republice Ukrainy), miasto w ziemi
+                            przemyskiej, 27 km na wsch. od Przemyśla, miejsce obrad wielu
+                            sejmików partykularnych ruskich.</note>
+                            <location><geo>49.8001441 23.1146331</geo></location>
                     </place>
                     <place xml:id="Gródek">
                         <placeName>Gródek</placeName>
