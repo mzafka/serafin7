@@ -190,10 +190,6 @@
                 
        
         <modelSequence predicate="$parameters?mode='map'">
-            
-            <model behaviour="block">
-                <param name="content" value="id(substring-after(@ref, '#'), doc('/db/apps/serafin/data/auxiliary/authorityLists.xml'))"/>
-            </model>
             <model behaviour="webcomponent">
                 <param name="name" value="'pb-geolocation'"/>
                 <param name="longitude" value="tokenize(id(substring-after(@ref, '#'), doc('/db/apps/serafin/data/auxiliary/authorityLists.xml'))/location/geo, ' ')[2]"/>
@@ -203,6 +199,7 @@
                 <param name="scroll" value="true()"/>
                 <param name="emit" value="'map'"/>
                 <param name="duration" value="1000"/>
+                <param name="content" value="id(substring-after(@ref, '#'), doc('/db/apps/serafin/data/auxiliary/authorityLists.xml'))/placeName/string()"/>
                 
                 <outputRendition xml:space="preserve">
             
@@ -210,9 +207,12 @@
     cursor: pointer; 
                 </outputRendition>
             </model>
+            <model behaviour="block">
+                <param name="content" value="id(substring-after(@ref, '#'), doc('/db/apps/serafin/data/auxiliary/authorityLists.xml'))/note"/>
+            </model>
         </modelSequence>
 
-        
+        <model predicate="$parameters?header='short'" behaviour="inline"/>
         <model predicate="parent::place" behaviour="inline">
             <outputRendition xml:space="preserve" scope="after">
             content: ': ';
@@ -221,7 +221,7 @@
             font-weight: bold;
             </outputRendition>
         </model>
-                    <model behaviour="alternate">
+        <model behaviour="alternate">
             <param name="default" value="."/>
             <param name="alternate" value="id(substring-after(@ref, '#'), doc('/db/apps/serafin/data/auxiliary/authorityLists.xml'))"/>
             <outputRendition xml:space="preserve">
