@@ -28,12 +28,21 @@
                     --pb-view-height: calc(100vh - 360px);
                 }
 
-                #view1, #view2 {
+                #view1, #view2, #map {
                     flex: 1 1;
-                    max-width: 60vw;
-                    margin: 0 16px;
+                    max-width: 60vh;
+                    margin: 0 10px;
                     max-height: var(--pb-view-height);
                     overflow: auto;
+                }
+
+                .places {
+                    flex: 1 1;
+                    max-width: 250px;
+                    margin: 0 10px;
+                    max-height: var(--pb-view-height);
+                    overflow: auto;
+                    text-align: justify;
                 }
 
                 .content-body {
@@ -103,20 +112,16 @@
                     <main class="content-body">
                         <pb-view id="view1" src="document1" xpath="! (.//text[@xml:lang = 'la']/body | .//text/body)[1]" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription"/>
                         <pb-view id="view2" src="document1" xpath="//text[@xml:lang='pl']/body" subscribe="transcription" column-separator=".tei-cb" append-footnotes="append-footnotes"/>
-                    
-
                         
                         <aside class="places">
-                            
-                                <pb-view id="locations" src="document1" subscribe="transcription" view="single" xpath="//teiHeader"
+                                <pb-view id="locations" src="document1" subscribe="transcription" emit="map" view="single" xpath="//teiHeader"
                                     wait-for="pb-leaflet-map">
                                     <pb-param name="mode" value="map"/>
                                 </pb-view>
-                            
                         </aside>
                         <aside class="map">
-                                <pb-leaflet-map id="map" zoom="13" subscribe="map" latitude="49.9875843" longitude="20.0286001"
-                                    access-token="pk.eyJ1IjoidHV1cm1hIiwiYSI6IkxzZzluTUEifQ.88AIQYi8b3-Af3WpGpwAWQ">
+                                <pb-leaflet-map id="map" subscribe="map"
+                                    access-token="pk.eyJ1IjoidHV1cm1hIiwiYSI6IkxzZzluTUEifQ.88AIQYi8b3-Af3WpGpwAWQ" no-scroll="no-scroll">
                                 </pb-leaflet-map>
                                 <script type="text/javascript">
                                     /**
@@ -151,19 +156,6 @@
             </app-drawer-layout>
         </pb-page>
         <div class="splash"/>
-        <script type="text/javascript">
-    /**
-     * Manually initialize map markers once components are ready.
-     * Not necessary if the pb-geolocation appear inside a component
-     * which does itself send the `pb-update` event, e.g. `pb-view`.
-     */
-    document.addEventListener('WebComponentsReady', () => {
-        document.dispatchEvent(new CustomEvent('pb-update', {
-            detail: {
-                root: document.getElementById('locations')
-            }
-        }));
-    });
-        </script>
+        
     </body>
 </html>
